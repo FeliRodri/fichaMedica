@@ -1,0 +1,168 @@
+<%- include('partials/_header') %>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="/add" method="post" class="row-g3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="rut">Rut</label>
+                                <input type="text" name="rut" placeholder="00000000-0" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="nom">Nombres</label>
+                                <input type="text" name="nom" placeholder="Felipe Andres" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="apell">Apellidos</label>
+                                <input type="text" name="apell" placeholder="Rodriguez Asenjo" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="dir">Dirección</label>
+                                <input type="text" name="dir" placeholder="Santa Elena 2345">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="city">Ciudad</label>
+                                <input type="text" name="city" placeholder="Santiago">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="phone">Telefono</label>
+                                <input type="text" name="phone" placeholder="5698765782" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="email">E-mail</label>
+                                <input type="text" name="email" placeholder="j.smith@gmail.com" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <label for="date">Fecha de Nacimiento</label>
+                                <input type="date" name="birth" placeholder="12/04/1986" required>
+                            </div>
+                        </div>
+                        <div class=" col-md-4">
+                            <div class="form-control">
+                                <label for="state">Estado Civil</label>
+                                <select class="custom-select" name="state">
+                                    <option selected disabled>Elija una opcion..</option>
+                                    <option value="Soltero(a)">Soltero(a)</option>
+                                    <option value="Casado(a)">Casado(a)</option>
+                                    <option value="Conviviente">Conviviente Civil</option>
+                                    <option value="Separado(a)">Separado(a)</option>
+                                    <option value="Viudo(a)">Viudo(a)</option>
+                                    <option value="Divorciado(a)">Divorciado(a)</option>
+                                </select>
+                                <div class="invalid-feedback">Selecciona una opcion valida de estado civil</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-control">
+                                <textarea type="text" name="comm" placeholder="Comentarios" cols="30" rows="10"
+                                    required></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">
+                            Añadir Ficha
+                        </button>
+                    </div>
+
+                </form>
+                <% if(typeof validaciones !='undefined' ) {%>
+                    <% validaciones.forEach( (validacion)=> { %>
+                        <div class="alert alert-warning alert-dismissible fade show">
+                            <strong>
+                                <%= validacion.msg %>
+                            </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        <% }) %>
+                            <% } %>
+            </div>
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-bordered table-condensed table-hover align-items-center">
+                    <thead>
+                        <tr>
+                            <th>Acciones</th>
+                            <th>n°</th>
+                            <th>Rut</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Direccion</th>
+                            <th>Ciudad</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Estado Civil</th>
+                            <th>Comentarios</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                            <% for (var i=0; i < data.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <a href="/delete/<%= data[i].rut  %>" class="btn btn-danger">Borrar</a>
+                                        <a href="/update/<%= data[i].rut  %>" class="btn btn-info">Actualizar</a>
+                                    </td>
+                                    <td>
+                                        <%= (i + 1) %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].rut %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].nombres %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].apellidos %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].direccion %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].ciudad %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].telefono %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].email %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].fechaNacimiento %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].estadoCivil %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].comentarios %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <%- include('partials/_footer') %>

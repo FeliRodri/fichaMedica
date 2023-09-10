@@ -1,0 +1,14 @@
+<%- include('partials/_header') %>
+
+    <h1>Error en la aplicación</h1>
+    <% if (error) { %>
+        <p>
+            <%= error.message %>
+        </p>
+        <p>Status Code: <%= error.status || 'Desconocido' %>
+        </p>
+        <% } else { %>
+            <p>No se ha producido ningún error.</p>
+            <% } %>
+
+                <%- include('partials/_footer') %>

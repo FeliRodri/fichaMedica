@@ -1,0 +1,77 @@
+<%- include('partials/_header') %>
+
+    <div class="container mt-auto">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/update/<%= data.rut %>" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" required name="rut" value="<%= data.rut %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required name="nombres" value="<%= data.nombres %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required name="apellidos" value="<%= data.apellidos %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required name="direccion" value="<%= data.direccion %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required name="ciudad" value="<%= data.ciudad %>"
+                                            class="form-control-sm">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <input type="text" required name="telefono" value="<%= data.telefono %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" required name="email" value="<%= data.email %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" required name="fechaNacimiento"
+                                            value="<%= data.fechaNacimiento %>" class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- <select class="custom-select" required name="state">
+                                            <option value="">Estado Civil</option>
+                                            <option value="1">Soltero(a)</option>
+                                            <option value="2">Casado(a)</option>
+                                            <option value="3">Conviviente Civil</option>
+                                            <option value="4">Separado(a)</option>
+                                            <option value="5">Viudo(a)</option>
+                                            <option value="6">Divorciado(a)</option>
+                                        </select>
+                                        <div class="invalid-feedback">Selecciona una opcion valida de estado civil</div> -->
+                                        <input type="text" required name="estadoCivil" value="<%= data.estadoCivil %>"
+                                            class="form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea type="text" required name="comentarios"
+                                            value="<%= data.comentarios %>" class="form-control-sm"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Editar Ficha
+                            </button>
+                            <a href="/" class="btn btn-danger">Cancelar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('partials/_footer') %>
