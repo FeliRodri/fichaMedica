@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
     res.render('fichas')
 })
 app.post('/add', [
-    body('rut', 'Ingrese un rut con valores 000000-0 sin puntos')
+    body('rut', 'Ingrese un Rut con valores 000000-0 sin puntos')
         .exists()
         .isLength({ max: 10 }),
     body('nom', 'Ingrese solo nombres')
